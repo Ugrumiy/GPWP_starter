@@ -1,0 +1,44 @@
+//
+   Created by Kodix on 12.01.2017.
+
+block data
+
+doctype html
+head
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    title #{data.pageTitle}
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // favicons - root folder
+    //link(rel='icon', href='resources/img/favicon.ico', type='image/vnd.microsoft.icon')
+    //link(rel='icon', href='resources/img/favicon.png', type='image/png')
+    // apple stuff
+    //link(rel='/apple-touch-icon', href='resources/img/apple-touch-icon.png')
+    // / / / /
+    link(rel='stylesheet', href='resources/css/libs_global.css')
+    link(rel='stylesheet', href='resources/css/style_global.css')
+    if data.hasOwnCss
+        link(rel='stylesheet', href='resources/css/' + data.pageName +'.css')
+
+    // Only for development
+    link(rel='stylesheet', href='temp/dev_temp.css')
+    // / Only for development
+
+body(class=data.bodyClass)
+
+    include  ../components/header/index
+
+    block content
+
+    include ../components/footer/index
+
+    script(src='resources/js/libs_global.js')
+    script(src='resources/js/common.js')
+    script(src='resources/js/main.js')
+    if data.hasOwnJs
+        script(src='resources/js/' + data.pageName +'.js')
+
+    // Only for development
+    script(src='temp/dev_temp.js' defer)
+    // / Only for development

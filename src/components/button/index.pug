@@ -1,0 +1,8 @@
+mixin btn(tag, text)
+    if tag != 'input'
+        #{tag}.btn(class = attributes.class)&attributes(attributes)
+            span.btn__text
+                | #{text}
+    else
+        - type = attributes.type || 'button';
+        #{tag}.btn(class = attributes.class value=text type=type)&attributes(attributes)

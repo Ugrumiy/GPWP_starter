@@ -1,0 +1,94 @@
+extends ../_layout
+
+include ../../components/button/index
+
+block data
+    -
+        var data = {
+            pageName: 'masterpage',
+            pageTitle: 'Masterpage',
+            bodyClass: 'masterpage',
+            hasOwnCss: true,
+            hasOwnJs: true,
+        }
+
+block content
+
+    // Подсветка кода
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atelier-cave-light.min.css")
+    // /Подсветка кода
+
+    // Headings
+    .mp-section
+        h2.mp-section__header
+            | Заголовки
+        .mp-section__body
+            .gridcontainer
+                .grid_6
+                    h1 Header h1
+                    h2 Header h2
+                    h3 Header h3
+                    h4 Header h4
+                    h5 Header h5
+                .grid_6
+                    .h1 Div .h1
+                    .h2 Div .h2
+                    .h3 Div .h3
+                    .h4 Div .h4
+                    .h5 Div .h5
+
+
+    // Lists
+    .mp-section
+        h2.mp-section__header
+            | Списки
+        .mp-section__body
+            .gridcontainer
+                .grid_6
+                    ul
+                        - for (var x = 1; x < 5; x++)
+                            li= x
+                .grid_6
+                    ol
+                        - for (var x = 1; x < 5; x++)
+                            li= x
+
+
+    // Buttons
+    .mp-section
+        h2.mp-section__header
+            | Кнопки
+        .mp-section__body
+            .gridcontainer
+                mixin makeBtns(tag)
+                    +btn(tag, tag + '.btn')(class='')&attributes(attributes)
+                    br
+                    br
+                    +btn(tag, tag + '.btn.btn_cta')(class='btn_cta')&attributes(attributes)
+                    br
+                    br
+                    +btn(tag, tag + '.btn.disabled')(class='disabled')&attributes(attributes)
+                    br
+                    br
+
+
+                .grid_12.mb20.mt10
+                    b
+                        | Использование:
+                    pre
+                        code.jade
+                            | +btn('a', 'Ссылочка')(class="btn_cta" href="#")  /(тег_кнопки, текст)(доп.класс, тип и другие атрибуты тега)/
+
+                    +btn('a', 'Ссылочка')(class='btn_cta' href="#")
+
+                .grid_2
+                    +makeBtns('a')(href="#")
+                .grid_2
+                    +makeBtns('span')
+                .grid_2
+                    +makeBtns('div')
+                .grid_2
+                    +makeBtns('button')
+                .grid_2
+                    +makeBtns('input')(type="submit")

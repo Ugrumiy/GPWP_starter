@@ -1,0 +1,79 @@
+.kdx-nav {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: rgba(53, 18, 95, 0.85);
+  z-index: 1000;
+  max-height: 100%;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #fff;
+  text-align: left;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-transform: none;
+  font-weight: normal;
+}
+.kdx-nav__trigger {
+  position: relative;
+  padding: 5px 30px 5px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.kdx-nav__trigger:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 10px;
+  top: 50%;
+  margin-top: -2px;
+  border: 5px solid transparent;
+  border-width: 0 5px 5px;
+  border-color: #fff transparent;
+  transition: all .4s;
+}
+.kdx-nav--opened .kdx-nav__trigger:before {
+  transform: rotate(180deg);
+}
+.kdx-nav__body {
+  display: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+  padding-bottom: 5px;
+}
+.kdx-nav a {
+  display: block;
+  color: #fff !important;
+  text-decoration: none;
+  transition: all .2s;
+  padding: 4px 30px 4px 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.kdx-nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.kdx-nav a.disabled, .kdx-nav a.disabled:hover {
+  opacity: 0.3;
+  cursor: default;
+  text-decoration: none;
+  background: none;
+}
+.kdx-nav hr {
+  margin: 5px 0;
+  height: 0;
+  border: none;
+}
+.kdx-nav h4 {
+  font-size: 13px;
+  margin: 5px 0 0;
+  font-weight: normal;
+  padding: 5px 12px;
+  text-transform: uppercase;
+}
+.kdx-nav hr, .kdx-nav h4 {
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+}
+.kdx-nav h4, .kdx-nav__trigger {
+  background: rgba(0, 0, 0, 0.42);
+}
