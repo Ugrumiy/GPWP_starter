@@ -20,7 +20,7 @@ var gulp        = require('gulp'),
     imagemin    = require('gulp-imagemin'),
     pngquant    = require('imagemin-pngquant'),
     svgstore    = require('gulp-svgstore'),
-    rimraf      = require('rimraf'),
+    rimraf      = require('gulp-rimraf'),
     args        = require('yargs').argv,
     header      = require('gulp-header'),
     gutil        = require('gulp-util'),
@@ -238,8 +238,11 @@ gulp.task('webserver', function () {
 
 
 // Задачи для очистки
-gulp.task('clean', function (done) {
-    rimraf(path.clean, done);
+gulp.task('clean',  function() {
+    return gulp.src("./build", { read: false })
+        .pipe(plumber({ errorHandler: notify.onError("Error: <%= error %>") })) //ловим ошибки
+        .pipe(rimraf())
+        .pipe(plumber.stop());
 });
 
 
